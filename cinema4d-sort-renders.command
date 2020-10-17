@@ -17,7 +17,11 @@ directoryCheck() {
 	# check if the folder is a directory / exists
 	if [[ ! -d "$1" ]]; then
 		echo -e "ERROR: $2 directory doesn't exist!\n"
-		sourceDir="" ## this needs to change because it could be source or dest dir
+		if [[ $2 == "Source" ]]; then
+			sourceDir=""
+		elif [[ $2 == "Destination" ]]; then
+			destDir=""
+		fi
 	else
 		# find directories and warn
 		if [[ `find $1 -type d -maxdepth 1 -mindepth 1` ]]; then
@@ -33,9 +37,9 @@ set -e
 clear
 
 echo " "
-echo " -------------------------------------------"
-echo "| Cinema4D Team Render Results File Sorter  |"
-echo " -------------------------------------------"
+echo " --------------------------------------"
+echo "|  Cinema4D TeamRender Results Sorter  |"
+echo " --------------------------------------"
 echo " "
 echo "This script currently supports the following naming format:"
 echo " "
