@@ -25,8 +25,9 @@ directoryCheck() {
 	else
 		# find directories and warn
 		if [[ `find $1 -type d -maxdepth 1 -mindepth 1` ]]; then
+			echo -e "\n//////// WARNING ////////"
 			echo "Found directories in $2 directory - double check that you have the correct"
-			echo "source folder before continuing. Press Return to continue or"
+			echo "source folder before continuing. Press Return to continue or press"
 			echo "Control + C to exit."
 			read continue
 		fi
@@ -56,13 +57,13 @@ echo "or you can drag the folder from Finder into this window."
 echo " "
 echo "Press Control + C to exit. Press Return to continue."
 
-# prompt the user to enter the source folder
+# prompt the user to hit return
 read continue
 echo -e "-------------------------------------------------------------------\n"
 
 while [[ $sourceDir == "" ]]; do
 	# prompt the user to enter the source folder
-	echo "Please enter the folder path of the results folder:"
+	echo "Please enter the folder path of the source / results folder:"
 	read sourceDir
 
 	# ensure the source directory isn't blank
@@ -75,8 +76,8 @@ done
 
 while [[ $destDir == "" ]]; do
 	# prompt the user to enter the destination folder
-	echo -e "\nPlease enter the folder path of the folder you wish to move the files to"
-	echo "or hit Return to sort them in their source folder:"
+	echo -e "\nPlease enter the folder path of the destination / the folder you wish to"
+	echo "move the files to or hit Return to sort them in their source folder:"
 	read destDir
 
 	# if the destination directory is blank, just sort the files in the source directory
